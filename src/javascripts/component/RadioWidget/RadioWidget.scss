@@ -1,0 +1,28 @@
+.radioWidget {
+  input[type="radio"] {
+    margin-right: 3px;
+  }
+
+  .radioItem {
+    margin-right: 10px;
+
+    .radioLabel a {
+      color: #006e9e;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}

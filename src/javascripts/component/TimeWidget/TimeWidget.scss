@@ -1,0 +1,38 @@
+.timeWidget {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .margin_r_5 {
+    margin-right: 5px;
+  }
+
+  .margin_l_5 {
+    margin-left: 5px;
+  }
+
+  .date {
+    position: relative;
+  }
+
+  .datePicker {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    background: white;
+    z-index: 100001;
+  }
+
+  input {
+    padding: 5px 8px;
+    width: 50px;
+    border: 1px solid #b3b3b3;
+    border-radius: 2px;
+    transition: border 300ms;
+
+    &:focus {
+      border: 1px solid #63c5ff;
+      box-shadow: 0 0 1px 1px #63c5ff;
+    }
+  }
+}
