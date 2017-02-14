@@ -1,5 +1,8 @@
 .idea/
 node_modules/
-*.iml
 
+*.iml
 npm-debug.log
+yarn-error.log
+
+web_server/source/

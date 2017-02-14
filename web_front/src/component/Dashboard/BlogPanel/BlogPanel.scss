@@ -1,0 +1,43 @@
+.blogPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 10px;
+  border-bottom: 1px solid #B7B7B7;
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 0 20px 0;
+    width: 60%;
+    background: #d0c06c;
+  }
+
+  .summary {
+    margin: 10px 0 20px 0;
+    width: 80%;
+    font-size: 1.2em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  img {
+    margin: 20px 0;
+    cursor: pointer;
+  }
+
+  .more {
+    margin: 20px auto;
+    padding: 5px 30px;
+    border: 1px solid rgba(208, 192, 108, 0.8);
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid rgba(208, 192, 108, 1);
+      transition: border 0.2s;
+    }
+  }
+}

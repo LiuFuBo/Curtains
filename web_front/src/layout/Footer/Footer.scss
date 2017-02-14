@@ -1,0 +1,35 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background: #222222;
+  padding: 40px 20px;
+  color: #fff;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.9em;
+
+    a {
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #AB8D48;
+      }
+    }
+  }
+}

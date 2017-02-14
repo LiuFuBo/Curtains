@@ -1,0 +1,11 @@
+.textInput {
+  padding: 5px 10px;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+  outline: none;
+  transition: border 300ms;
+
+  &:focus {
+    border: 1px solid #63c5ff;
+  }
+}
