@@ -4,5 +4,6 @@ node_modules/
 *.iml
 npm-debug.log
 yarn-error.log
+yarn.lock
 
 web_server/source/

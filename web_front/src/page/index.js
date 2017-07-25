@@ -5,3 +5,5 @@ export * from './LoginPage';
 export * from './RegisterPage';
 export * from './PersonalPage';
 export * from './NewBlogPage';
+export * from './BlogPage';
+export * from './Album';
