@@ -96,7 +96,7 @@ export class RichTextEdit extends React.Component {
             editorState={editorState}
             onChange={this.onChange}
             ref="editor"
-            />
+          />
         </div>
       </div>
     );

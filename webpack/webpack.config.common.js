@@ -30,7 +30,15 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader'
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: './webpack/postcss.config.js'
+              }
+            }
+          }
         ]
       },
       {
@@ -61,8 +69,7 @@ module.exports = {
         context: '/',
         sassLoader: {
           includePaths: [path.resolve(__dirname, 'src', 'scss')]
-        },
-        postcss: [autoprefixer]
+        }
       }
     })
   ],

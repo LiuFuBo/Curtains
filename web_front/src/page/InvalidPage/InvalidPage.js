@@ -5,7 +5,7 @@ export class InvalidPage extends React.Component {
   render() {
     return (
       <div className={styles.page}>
-          <img src="/images/404_tag.jpg"/>
+        <img src="/images/404_tag.jpg"/>
       </div>
     );
   }

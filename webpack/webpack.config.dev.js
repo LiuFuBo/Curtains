@@ -20,7 +20,15 @@ module.exports = webpackMerge(commonWebpack, {
         use: [
           'style-loader',
           'css-loader?modules=true&importLoaders=2&localIdentName=[name]__[local]',
-          'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: './webpack/postcss.config.js'
+              },
+              sourceMap: true
+            }
+          },
           'sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true'
         ]
       },

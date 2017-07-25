@@ -36,8 +36,7 @@ export class Radios extends React.PureComponent {
           radios.map(radio => (
             <div className={styles.radioItem} key={radio.key}>
               <input type="radio" id={`${name}_${radio.key}`} name={name} value={radio.value}
-                     checked={selected === radio.value}
-                     onChange={() => onChange(radio.value, name)}/>
+                checked={selected === radio.value} onChange={() => onChange(radio.value, name)}/>
               <label className={styles.radioLabel} htmlFor={`${name}_${radio.key}`}>
                 {
                   radio.link ? (

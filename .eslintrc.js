@@ -269,7 +269,7 @@ module.exports = {
     ],
     "react/jsx-uses-vars": "error"
   },
-  "globals": [
-    "React"
-  ]
+  "globals": {
+    React: true
+  }
 };

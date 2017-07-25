@@ -94,13 +94,11 @@ export class TimeWidget extends React.PureComponent {
     return (
       <div className={styles.timeWidget}>
         <input className={styles.margin_r_5} type="text" name="year" value={year} maxLength="256"
-               onChange={e => this.onChange(e.target.value, 'year')}/>年
+          onChange={e => this.onChange(e.target.value, 'year')}/>年
         <input className={`${styles.margin_r_5} ${styles.margin_l_5}`} type="text" name="month" value={month}
-               maxLength="256"
-               onChange={e => this.onChange(e.target.value, 'month')}/>月
+          maxLength="256" onChange={e => this.onChange(e.target.value, 'month')}/>月
         <input className={`${styles.margin_r_5} ${styles.margin_l_5}`} type="text" name="day" value={day}
-               maxLength="256"
-               onChange={e => this.onChange(e.target.value, 'day')}/>日
+          maxLength="256" onChange={e => this.onChange(e.target.value, 'day')}/>日
         <div className={`${styles.margin_l_5} ${styles.date}`}>
           <button onClick={this.onClickDate}>日期</button>
           {
@@ -111,7 +109,7 @@ export class TimeWidget extends React.PureComponent {
                 disabledDays={DateUtils.isPastDay}
                 enableOutsideDays
                 onDayClick={this.onDayClick}
-                />
+              />
             ) : null
           }
         </div>
