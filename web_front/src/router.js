@@ -1,4 +1,4 @@
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import {
   App,
   Dashboard,
@@ -9,36 +9,26 @@ import {
   NewBlogPage
 } from './page';
 
+const app = () => (
+  <App>
+    <Switch>
+      <Route path="/dashboard" component={Dashboard}/>
+      <Route path="/info" component={PersonalPage}/>
+      <Route exact path="/blog" component={NewBlogPage}/>
+      <Route path="*" component={InvalidPage}/>
+    </Switch>
+  </App>
+);
+
 export default (
   <Router>
     <Switch>
-      <Route exact path="/" render={() => (
-        <App>
-          <Dashboard/>
-        </App>
-      )}/>
-      <Route exact path="/dashboard" render={() => (
-        <App>
-          <Dashboard/>
-        </App>
-      )}/>
-      <Route exact path="/info" render={() => (
-        <App>
-          <PersonalPage/>
-        </App>
-      )}/>
-      <Route exact path="/blog" render={() => (
-        <App>
-          <NewBlogPage/>
-        </App>
-      )}/>
+      <Route exact path="/" render={() =>
+        <Redirect to="/dashboard"/>}
+      />
       <Route exact path="/login" component={LoginPage}/>
-      <Route exact path="/register" component={() => (
-        <App>
-          <RegisterPage/>
-        </App>
-      )}/>
-      <Route component={InvalidPage}/>
+      <Route exact path="/register" component={RegisterPage}/>
+      <Route path="/" component={app}/>
     </Switch>
   </Router>
 );

@@ -12,8 +12,11 @@
     align-items: center;
     justify-content: space-between;
     margin: 30px 0 20px 0;
-    width: 60%;
     background: #d0c06c;
+
+    span {
+      margin: 0 20px;
+    }
   }
 
   .summary {

@@ -13,12 +13,11 @@
   .login {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-self: center;
     width: 400px;
-    padding: 10px 20px;
+    padding: 150px 20px 10px 20px;
 
     >div {
+      position: relative;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -27,11 +26,13 @@
     }
 
     .inputText {
-      flex-grow: 1;
+      width: 100%;
+      padding: 10px 10px 10px 32px;
     }
 
     .loginButton {
       margin: 10px 0 5px 0;
+      padding: 10px 0;
       width: 100%;
       background: #AB8D48;
     }
@@ -40,6 +41,11 @@
       align-self: center;
       margin-top: 30px;
       font-family: '黑体';
+    }
+
+    .error {
+      color: red;
+      align-self: flex-start;
     }
 
     .remember {
@@ -55,7 +61,9 @@
     }
 
     i {
-      margin-right: 10px;
+      position: absolute;
+      top: 12px;
+      left: 12px;
     }
 
     a {

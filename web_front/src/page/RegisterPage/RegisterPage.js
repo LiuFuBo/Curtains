@@ -64,32 +64,34 @@ export class RegisterPage extends React.Component {
 
     return (
       <div className={styles.page}>
-        <div className={styles.topTriangle}/>
-        <form onKeyUp={this.onkeyUp}>
-          <div>
-            <label htmlFor="userName">email：</label>
-            <Input id={'userName'} text={userName} name={'userName'} tabIndex={'1'} onChange={this.onChange}/>
-          </div>
+        <div className={styles.register}>
+          <div className={styles.topTriangle}/>
+          <form onKeyUp={this.onkeyUp}>
+            <div>
+              <label htmlFor="userName">email：</label>
+              <Input id={'userName'} text={userName} name={'userName'} tabIndex={'1'} onChange={this.onChange}/>
+            </div>
 
-          <div>
-            <label htmlFor="password">password：</label>
-            <Input id={'password'} type={'password'} text={password} name={'password'} tabIndex={'2'} onChange={this.onChange}/>
-          </div>
+            <div>
+              <label htmlFor="password">password：</label>
+              <Input id={'password'} type={'password'} text={password} name={'password'} tabIndex={'2'} onChange={this.onChange}/>
+            </div>
 
-          <div>
-            <label htmlFor="doPassword">do password：</label>
-            <Input id={'doPassword'} type={'password'} text={doPassword} name={'doPassword'} tabIndex={'3'} onChange={this.onChange}/>
-          </div>
+            <div>
+              <label htmlFor="doPassword">do password：</label>
+              <Input id={'doPassword'} type={'password'} text={doPassword} name={'doPassword'} tabIndex={'3'} onChange={this.onChange}/>
+            </div>
 
-          <div>
-            <label htmlFor="captcha">captcha：</label>
-            <Input id={'captcha'} text={captcha} name={'captcha'} tabIndex={'4'} onChange={this.onChange}/>
-          </div>
+            <div>
+              <label htmlFor="captcha">captcha：</label>
+              <Input id={'captcha'} text={captcha} name={'captcha'} tabIndex={'4'} onChange={this.onChange}/>
+            </div>
 
-          <div>
-            <Button className={styles.submit} label={'Register'} tabIndex={'5'} onClick={this.onClick}/>
-          </div>
-        </form>
+            <div>
+              <Button className={styles.submit} label={'Register'} tabIndex={'5'} onClick={this.onClick}/>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

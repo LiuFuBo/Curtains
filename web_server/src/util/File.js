@@ -28,4 +28,19 @@ export class File {
       });
     });
   }
+
+  static async parseBase64ToFile(path, base64) {
+    const _base64 = base64.replace(/^data:image\/\w+;base64,/, "");
+    const buffer = new Buffer(_base64, 'base64');
+
+    return new Promise((resolve, reject) => {
+      fs.writeFile(path, buffer, (error) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(true);
+        }
+      });
+    });
+  }
 }

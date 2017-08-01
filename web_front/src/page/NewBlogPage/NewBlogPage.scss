@@ -29,6 +29,18 @@
       }
     }
 
+    .images {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      img {
+        margin-left: 10px;
+        width: 100px;
+        height: 100px;
+      }
+    }
+
     .confirm {
       align-self: center;
       margin-top: 80px;
@@ -43,6 +55,9 @@
     justify-content: center;
     margin-left: 30px;
     width: 300px;
+    border-left: 1px solid rgba(154, 81, 81, 0.4);
+    border-top: 1px solid rgba(154, 81, 81, 0.4);
+    border-bottom: 1px solid rgba(154, 81, 81, 0.4);
 
     .blog {
       display: flex;

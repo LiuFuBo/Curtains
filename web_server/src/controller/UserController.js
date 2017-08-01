@@ -73,16 +73,21 @@ export class UserController {
 
   async login(ctx) {
     const {userName, password} = ctx.request.body;
-    const user = await userService.getUserByName(userName);
+    const user = await userService.getUserByNameAndPsw(userName, password);
 
-    if (user.password === password) {
+    if (user) {
       ctx.body = {
-        user
+        status: 200,
+        msg: '',
+        content: {
+          userName: user.userName
+        }
       };
     } else {
       ctx.body = {
-        status: '404',
-        message: 'user is not found'
+        status: 404,
+        msg: '用户名或密码错误',
+        content: {}
       }
     }
 

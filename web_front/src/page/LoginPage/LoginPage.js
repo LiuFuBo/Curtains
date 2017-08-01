@@ -10,7 +10,8 @@ export class LoginPage extends React.Component {
     this.state = {
       userName: '',
       password: '',
-      remember: false
+      remember: false,
+      error: ''
     };
     this.onLogin = this.onLogin.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
@@ -22,12 +23,13 @@ export class LoginPage extends React.Component {
     newState[name] = value;
     this.setState({
       ...this.state,
+      error: '',
       ...newState
     });
   }
 
   onLogin() {
-    const {userName, password} = this.state;
+    const {userName, password, remember} = this.state;
 
     Http.post('/api/login',
       {
@@ -36,8 +38,28 @@ export class LoginPage extends React.Component {
           password
         }
       })
-      .then(() => {
-        console.log('logined');
+      .then((resp) => {
+        const {status, msg} = resp.body;
+
+        if (status === 200) {
+          sessionStorage.setItem('isLogin', true);
+          if (remember) {
+            localStorage.setItem('remember', true);
+          } else {
+            localStorage.removeItem('remember');
+          }
+          window.location.href = '/#/dashboard';
+        } else {
+          this.setState({
+            error: msg || '登录失败'
+          });
+        }
+      })
+      .catch((error) => {
+        sessionStorage.removeItem('isLogin');
+        this.setState({
+          error: error || '登录失败'
+        });
       });
   }
 
@@ -48,7 +70,7 @@ export class LoginPage extends React.Component {
   }
 
   render() {
-    const {userName, password, remember} = this.state;
+    const {userName, password, remember, error} = this.state;
 
     return (
       <div className={styles.page}>
@@ -58,7 +80,7 @@ export class LoginPage extends React.Component {
 
         <div className={styles.login} onKeyUp={this.onKeyUp}>
           <div>
-            <i className="fa fa-user-circle"/>
+            <i className="fa fa-user-o"/>
             <Input
               className={styles.inputText}
               name={'userName'}
@@ -70,7 +92,7 @@ export class LoginPage extends React.Component {
           </div>
 
           <div>
-            <i className="fa fa-paste"/>
+            <i className="fa fa-unlock-alt fa-lg"/>
             <Input
               className={styles.inputText}
               type={'password'}
@@ -81,6 +103,14 @@ export class LoginPage extends React.Component {
               onChange={value => this.onChange('password', value)}
             />
           </div>
+
+          {
+            error !== '' ? (
+              <div className={styles.error}>
+                {error}
+              </div>
+            ) : null
+          }
 
           <div>
             <input id="remember" type="checkbox" tabIndex="3" name="remember" checked={remember} onChange={() => this.onChange('remember', !remember)}/>

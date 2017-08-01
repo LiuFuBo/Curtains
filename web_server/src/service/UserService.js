@@ -8,23 +8,15 @@ const userModel = new User();
 export class UserService {
   async getUserById(id) {
     try {
-      return await userModel.queryFromText('id', id);
+      return await userModel.queryById(id);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async getUserByName(name) {
+  async getUserByNameAndPsw(name, password) {
     try {
-      return await userModel.queryFromText('userName', name);
-    } catch(error) {
-      console.log(error);
-    }
-  }
-
-  async getAllUsers() {
-    try {
-      return await userModel.queryAllFromText();
+      return await userModel.queryByNameAndPsw(name, password);
     } catch(error) {
       console.log(error);
     }
@@ -34,7 +26,7 @@ export class UserService {
     const id = UUID.v1();
 
     try {
-      return await userModel.appendAsText({
+      return await userModel.save({
         id,
         professition: '',
         gender: 'male',

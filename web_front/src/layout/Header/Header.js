@@ -71,11 +71,11 @@ export class Header extends React.PureComponent {
           <div className={styles.account}>
             <div>
               <i className="fa fa-sign-in"/>
-              <a href="#/register">注册</a>
+              <a href="/#/register">注册</a>
             </div>
             <div>
               <i className="fa fa-sign-out"/>
-              <a href="#/login">登录</a>
+              <a href="/#/login">登录</a>
             </div>
           </div>
         </div>
@@ -83,23 +83,23 @@ export class Header extends React.PureComponent {
         <div className={styles.section}>
           <div className={styles.nav}>
             <div className={styles.navLeft}>
-              <a href="#/dashboard">home</a>
-              <a href="#/book">book</a>
-              <a href="#/comment">comment</a>
-              <a href="#/info">edit</a>
+              <a href="/#/dashboard">home</a>
+              <a href="/#/blog">blog</a>
+              <a href="/#/comment">comment</a>
+              <a href="/#/info">edit</a>
             </div>
 
             <div className={styles.navRight}>
-              <a href="#/dashboard">
+              <a href="/#/dashboard">
                 <i className="fa fa-home"/>
               </a>
-              <a href="#/book">
+              <a href="/#/blog">
                 <i className="fa fa-book"/>
               </a>
-              <a href="#/comment">
+              <a href="/#/comment">
                 <i className="fa fa-comment-o"/>
               </a>
-              <a href="#/info">
+              <a href="/#/info">
                 <i className="fa fa-edit"/>
               </a>
             </div>
@@ -111,16 +111,16 @@ export class Header extends React.PureComponent {
             <img className={fixed ? styles.small : ''} src="/images/logo_toolbar.png"/>
 
             <div className={styles.navMenu}>
-              <a href="#/dashboard">
+              <a href="/#/dashboard">
                 <i className="fa fa-home"/>home
               </a>
-              <a href="#/book">
-                <i className="fa fa-book"/>book
+              <a href="/#/blog">
+                <i className="fa fa-book"/>blog
               </a>
-              <a href="#/comment">
+              <a href="/#/comment">
                 <i className="fa fa-comment-o"/>comment
               </a>
-              <a href="#/edit">
+              <a href="/#/edit">
                 <i className="fa fa-edit"/>edit
               </a>
             </div>

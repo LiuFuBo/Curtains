@@ -11,21 +11,23 @@ export class NewBlogPage extends React.Component {
       title: '',
       summary: '',
       content: '',
+      images: [],
       blogs: []
     };
     this.onClick = this.onClick.bind(this);
+    this.onload = this.onload.bind(this);
   }
 
   componentDidMount() {
     Http.get('/api/blogs', {
       param: {
         page: 1,
-        perPage: 10
+        perPage: 6
       }
     })
       .then((resp) => {
         this.setState({
-          blogs: resp.body
+          blogs: resp.body.content
         });
       })
       .catch((error) => {
@@ -45,14 +47,19 @@ export class NewBlogPage extends React.Component {
   }
 
   onClick() {
-    const {title, summary, content} = this.state;
+    const {title, summary, content, images} = this.state;
+    const image = images.map((item, i) => ({
+      name: `iamge${i}`,
+      file: item.file
+    }));
 
     Http.post('/api/blog', {
       data: {
         title,
         summary,
         content
-      }
+      },
+      attach: image
     })
       .then((resp) => {
         console.log(resp);
@@ -62,8 +69,14 @@ export class NewBlogPage extends React.Component {
       });
   }
 
+  onload(files) {
+    this.setState({
+      images: files
+    });
+  }
+
   render() {
-    const {title, summary, content, blogs} = this.state;
+    const {title, summary, content, blogs, images} = this.state;
 
     return (
       <div className={styles.page}>
@@ -84,13 +97,21 @@ export class NewBlogPage extends React.Component {
           </div>
 
           <div>
-            <Upload className={styles.upload}>
+            <Upload className={styles.upload} onload={this.onload}>
               <Button className={styles.submit} label={'add'}/>
             </Upload>
 
-            <div>
-              <span>dfsdfss.png</span>
-            </div>
+            {
+              images.length !== 0 ? (
+                <div className={styles.images}>
+                  {
+                    images.map((item, i) =>
+                      <img key={i} src={item.dataUrl} title={item.file.name}/>
+                    )
+                  }
+                </div>
+              ) : null
+            }
           </div>
 
           <div className={styles.confirm}>
@@ -100,12 +121,14 @@ export class NewBlogPage extends React.Component {
 
         <div className={styles.right}>
           {
-            blogs.map(blog => (
-              <div className={styles.blog}>
-                <img src={blog.image.original}/>
-                <label>{blog.title}</label>
-              </div>
-            ))
+            blogs.length !== 0 ? (
+              blogs.map(blog => (
+                <div key={blog.id} className={styles.blog}>
+                  <img src={blog.image}/>
+                  <label>{blog.title}</label>
+                </div>
+              ))
+            ) : '没有可用的日志'
           }
         </div>
       </div>

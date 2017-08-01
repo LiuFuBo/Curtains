@@ -4,24 +4,22 @@ const blogService = new BlogService();
 
 export class BlogController {
   async getBlogs(ctx) {
-    const blogs = await blogService.getBlogs();
+    const {page, perPage} = ctx.params;
+    const _page = page && page > 0 || 1;
+    const _perPage = perPage && perPage > 0 || 10;
+    const from = (_page - 1) * _perPage + 1;
+    const to = _page * _perPage;
+    const blogs = await blogService.getBlogs(from, to);
 
     ctx.body = {
-      blogs
-    };
-  }
-
-  async getBlogByName(ctx) {
-    const {name} = ctx.param;
-    const blog = await blogService.getBlogByName(name);
-
-    ctx.body = {
-      blog
+      status: 200,
+      msg: '',
+      content: blogs
     };
   }
 
   async getBlogById(ctx) {
-    const {id} = ctx.param;
+    const {id} = ctx.params;
     const blog = await blogService.getBlogById(id);
 
     ctx.body = {
@@ -34,7 +32,9 @@ export class BlogController {
     const blog = await blogService.saveBlog({title, summary, content, image});
 
     ctx.body = {
-      blog
+      status: 201,
+      msg: '',
+      content: blog
     };
   }
 
