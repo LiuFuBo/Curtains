@@ -15,16 +15,28 @@ export class BlogService {
 
   async saveBlog(blog) {
     const id = UUID.v1();
-    const {image} = blog;
-    const url = `../../resource/${id}`;
+    const {images} = blog;
+    const dir = `/public/${id}`;
+    let dirString = '';
 
     try {
-      if (File.isExis(url) || File.createDir(url)) {
-        if (await File.parseBase64ToFile(url, image)) {
+      if (await File.createDir(dir)) {
+        for(const item of images) {
+          const imageName = UUID.v1();
+          const extension = item.path.split('.')[1];
+          const imageDir = dir + '\\' + imageName + '.' + extension;
+
+          if (await File.removeFile(item.path, imageDir)) {
+            dirString = dirString + imageDir + ';';
+          }
+        }
+        if (dirString === '') {
+          return {};
+        } else {
           return await blogModel.save({
             id,
             ...blog,
-            image: url
+            image: dirString
           });
         }
       }

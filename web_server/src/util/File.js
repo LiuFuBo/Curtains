@@ -1,27 +1,37 @@
 import fs from 'fs';
+import path from 'path';
 
 export class File {
+  static dirname = path.join(__dirname, '../../');
+
   static async createDir(dir) {
     return new Promise(async (resolve, reject) => {
       try {
-        resolve(await File.isExis(dir));
+        const _dir = path.join(File.dirname, dir);
+        const exis = await File.isExis(_dir);
+
+        if (!exis) {
+          fs.mkdir(_dir, (error) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(true);
+            }
+          });
+        } else {
+          resolve(true);
+        }
       } catch(error) {
-        fs.mkdir(dir, (error) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(true);
-          }
-        });
+        console.log(error);
       }
     });
   }
 
   static async isExis(dir) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       fs.access(dir, (error) => {
         if (error) {
-          reject(error);
+          resolve(false);
         } else {
           resolve(true);
         }
@@ -37,6 +47,24 @@ export class File {
       fs.writeFile(path, buffer, (error) => {
         if (error) {
           reject(error);
+        } else {
+          resolve(true);
+        }
+      });
+    });
+  }
+
+  static async removeFile(sourceAbsolute, dist) {
+    return new Promise((resolve) => {
+      const _dir = path.join(File.dirname, dist);
+      const is = fs.createReadStream(sourceAbsolute);
+      const os = fs.createWriteStream(_dir);
+
+      is.pipe(os);
+      is.on('end',function(err) {
+        fs.unlinkSync(sourceAbsolute);
+        if (err) {
+          resolve(false);
         } else {
           resolve(true);
         }

@@ -28,8 +28,8 @@ export class BlogController {
   }
 
   async saveBlog(ctx) {
-    const {title, summary, content, image} = ctx.request.body;
-    const blog = await blogService.saveBlog({title, summary, content, image});
+    const {title, summary, content, files} = ctx.request.body;
+    const blog = await blogService.saveBlog({title, summary, content, images: files.image});
 
     ctx.body = {
       status: 201,

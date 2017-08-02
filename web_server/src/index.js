@@ -1,6 +1,5 @@
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
-import koaBody from 'koa-body';
 import Logger from 'koa-logger';
 import routes from './routes';
 import middleware from './middleware';
@@ -9,7 +8,6 @@ const app = new Koa();
 
 app.use(Logger());
 app.use(bodyParser());
-app.use(koaBody());
 app.use(middleware());
 
 app.use(async (ctx, next) => {

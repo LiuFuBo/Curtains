@@ -46,6 +46,7 @@
     "draft-js": "^0.10.1",
     "draft-js-export-html": "^0.5.4",
     "font-awesome": "^4.7.0",
+    "formidable": "^1.1.1",
     "koa": "^2.3.0",
     "koa-body": "^2.3.0",
     "koa-bodyparser": "^3.2.0",

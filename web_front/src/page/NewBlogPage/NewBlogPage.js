@@ -48,8 +48,8 @@ export class NewBlogPage extends React.Component {
 
   onClick() {
     const {title, summary, content, images} = this.state;
-    const image = images.map((item, i) => ({
-      name: `iamge${i}`,
+    const image = images.map((item) => ({
+      name: 'image',
       file: item.file
     }));
 
